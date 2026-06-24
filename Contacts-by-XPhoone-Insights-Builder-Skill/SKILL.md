@@ -1,5 +1,6 @@
 ---
-description: Test
+name: Contacts by XPhone Insights Builder
+description: A Claude AI skill that contains all the information needed to create a static web app for Contacts by XPhone Insights.
 ---
 
 # Instructions
