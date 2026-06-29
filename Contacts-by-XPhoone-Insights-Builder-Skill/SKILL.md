@@ -6,8 +6,13 @@ description: A Claude AI skill that contains all the information needed to creat
 # Instructions
 Create a file named "index.html" with custom HTML and CSS code.
 You must create a dashboard.
-The dashboard is displayed in an iframe. Therefore, make sure it fills the entire screen and do not add a border or shadow.
+The dashboard is displayed in an iframe and is very limited in space.
+With "Dashboard" is always meant, that the user wants an minimalistic pop up sized page that can be implementet in the iframe.
+If the page is opend without inserted content, use empty placeholders & display only content that actualy contains Informations. Otherwise dont display it.
+Therefore, make sure it fills the entire screen and do not add a border or shadow.
 When the page loads, you will recive Information listed under Incoming Information.
+
+
 
 # Incoming Information
 ## Usage
@@ -95,7 +100,10 @@ Start an Call: { "type": "callPhoneNumber", "value": "+4917612345678" }
 Before you start building, be sure that you have all those informationos. If some of them are missing, ask the user before you start!
 - How should the Dashboard look like?
 - Which Informations should be displayed?
+- Are all Informations that the User wants to display in the Insights are Mapped to one of the fields of incoming Informations? (Help the user Mapping the Data with the VDir Docs if required)
 
 # Other Sources and Examples:
+Read the Github Documentation, the Examples and C4B Help before you start building
+- https://help.c4b.com/xphone-connect-10/doc/de/admin/sys/dir.html (VDir Mapping, Optional)
 - https://help.c4b.com/cbyx/de/admin/intgrtn/insights.html
 - https://github.com/C4BAG/insights-examples
