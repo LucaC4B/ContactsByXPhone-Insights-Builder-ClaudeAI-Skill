@@ -17,10 +17,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Checkout Examples Repo
+        uses: actions/checkout@v4
+        with:
+          repository: C4BAG/insights-examples
+          path: examples-repo
+
+      - name: Copy examples into skill resources
+        run: |
+          mkdir -p Contacts-by-XPhoone-Insights-Builder-Skill/resources
+          cp -r examples-repo/examples/. \
+            Contacts-by-XPhoone-Insights-Builder-Skill/resources/
+
+      - name: Extend SKILL.md with BasePromt.md
+        run: |
+          printf '\n\n' >> Contacts-by-XPhone-Insights-Builder-Skill/SKILL.md
+          cat BasePromt.md >> Contacts-by-XPhone-Insights-Builder-Skill/SKILL.md
+
+      - name: Build InteractivePromt.md
+        run: |
+          cat Contacts-by-XPhone-Insights-Interactive-Promt/Promt.md > InteractivePromt.md
+          printf '\n\n' >> InteractivePromt.md
+          cat BasePromt.md >> InteractivePromt.md
+
       - name: Create ZIP archive
         run: |
-          cd Contacts-by-XPhoone-Insights-Builder-Skill
-          zip -r ../Contacts-by-XPhoone-Insights-Builder-Skill.zip .
+          cd Contacts-by-XPhone-Insights-Builder-Skill
+          zip -r ../Contacts-by-XPhone-Insights-Builder-Skill.zip .
 
       - name: Generate release tag
         id: tag
@@ -31,4 +54,6 @@ jobs:
         with:
           tag_name: ${{ steps.tag.outputs.tag }}
           name: Release ${{ steps.tag.outputs.tag }}
-          files: Contacts-by-XPhoone-Insights-Builder-Skill.zip
+          files: |
+            Contacts-by-XPhone-Insights-Builder-Skill.zip
+            InteractivePromt.md
